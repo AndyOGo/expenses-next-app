@@ -9,8 +9,7 @@ export default (req, res) => {
   const expense = expenses.find(eid);
 
   if (!expense) {
-    res.statusCode = 404;
-    res.status(405).end(`Expense ${eid} Not Found!`);
+    res.status(404).end(`Expense ${eid} Not Found!`);
     return;
   }
 
