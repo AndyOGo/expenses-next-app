@@ -18,8 +18,8 @@ const ExpensesTable = () => (
           </thead>
 
           <tbody>
-            {Array.isArray(expenses.state.expenses) && expenses.state.expenses.map(({ recipient, type, amount, currency, transaction_date}) => (
-              <tr>
+            {Array.isArray(expenses.state.expenses) && expenses.state.expenses.map(({ id, recipient, type, amount, currency, transaction_date}) => (
+              <tr key={id}>
                 <td>{recipient}</td>
                 <td>{type}</td>
                 <td>{amount}</td>

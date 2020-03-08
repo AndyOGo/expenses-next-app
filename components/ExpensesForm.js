@@ -31,8 +31,8 @@ const ExpensesForm = () => (
             <label>Currency</label>
             <Field name="type" component="select" placeholder="Type"
             required>
-              {Array.isArray(currencies.state.currencies) && currencies.state.currencies.map(({ code, name }, index) => (
-                <option value={code} key={`${code}-${index}`}>{`${code} - ${name}`}</option>
+              {Array.isArray(currencies.state.currencies) && currencies.state.currencies.map(({ code, name }) => (
+                <option value={code} key={code}>{`${code} - ${name}`}</option>
               ))}
             </Field>
 
