@@ -1,4 +1,4 @@
-import App, {Container} from 'next/app'
+import App from 'next/app'
 import React from 'react'
 import { Provider } from 'unstated'
 
@@ -9,11 +9,9 @@ class ExpensesApp extends App {
     const {Component, pageProps} = this.props
 
     return (
-      <Container>
-        <Provider>
-          <Component {...pageProps} />
-        </Provider>
-      </Container>
+      <Provider>
+        <Component {...pageProps} />
+      </Provider>
     )
   }
 }
