@@ -1,4 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
+import low from 'lowdb';
+import FileSync from 'lowdb/adapters/FileSync';
 
 const withId = (item) => {
   if (!item.id) {
@@ -8,49 +10,50 @@ const withId = (item) => {
   return { ...item };
 }
 
-const createDB = (initialData = []) => {
+const createDB = (path, initialData = []) => {
   const data = initialData.map((item) => withId(item));
+  const adapter = new FileSync('db.json');
+  const db = low(adapter);
+
+  db.defaults({ expenses: data }).write()
 
   class DB {
     insert(item) {
       const newItem = withId(item);
 
-      data.push(newItem);
-
-      console.log(data);
+      db.get(path)
+        .push(newItem)
+        .write()
 
       return newItem;
     }
 
-    find(_id) {
-      if (_id) {
-        console.log(data);
-        const item = data.find(({ id }) => id === _id);
-
-        return item;
+    find(id) {
+      if (id) {
+        return db.get(path)
+          .find({ id })
+          .value()
       }
 
-      return data;
+      return db.get(path)
+        .value();
     }
 
-    update(_id, item) {
-      const oldItem = this.find(_id);
+    update(id, item) {
+      const newItem = withId(item);
 
-      if (oldItem) {
-        const newItem = withId(item);
+      db.get(path)
+        .find({ id })
+        .assign(newItem)
+        .write()
 
-        data.splice(data.indexOf(oldItem), 1, newItem);
-
-        return newItem;
-      }
+      return newItem;
     }
 
-    delete(_id) {
-      const oldItem = this.find(_id);
-
-      if (oldItem) {
-        data.splice(data.indexOf(oldItem), 1);
-      }
+    delete(id) {
+      db.get(path)
+        .remove({ id })
+        .write()
     }
   }
 

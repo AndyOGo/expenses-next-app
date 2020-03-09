@@ -8,4 +8,4 @@ const expenses = [{
   type: "other",
 }];
 
-export default createDB(expenses);
+export default createDB('expenses', expenses);
