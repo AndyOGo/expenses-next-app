@@ -6,17 +6,13 @@ export default (req, res) => {
 
   switch (method) {
     case 'GET':
-      res.statusCode = 200
-      res.setHeader('Content-Type', 'application/json')
-      res.end(JSON.stringify(expenses.find()))
+      res.status(200).json(expenses.find());
       break
 
     case 'POST':
       const item = expenses.insert(body);
 
-      res.statusCode = 201
-      res.setHeader('Content-Type', 'application/json')
-      res.end(JSON.stringify(item))
+      res.status(201).json(item)
       break
 
     default:

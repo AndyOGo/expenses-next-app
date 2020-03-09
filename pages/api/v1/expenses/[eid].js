@@ -8,9 +8,6 @@ export default (req, res) => {
   } = req;
   const expense = expenses.find(eid);
 
-  console.log(eid);
-  console.log(expenses);
-
   if (!expense) {
     res.status(404).end(`Expense ${eid} Not Found!`);
     return;
@@ -18,22 +15,19 @@ export default (req, res) => {
 
   switch (method) {
     case 'GET':
-      res.statusCode = 200
-      res.setHeader('Content-Type', 'application/json')
-      res.end(JSON.stringify(expense))
+      res.status(200).json(expense);
       break
 
     case 'PUT':
       const item = expenses.update(eid, body);
 
-      res.statusCode = 200
-      res.setHeader('Content-Type', 'application/json')
-      res.end(JSON.stringify(item))
+      res.status(200).json(item)
       break
 
     case 'DELETE':
       expenses.delete(eid);
-      res.statusCode = 204
+
+      res.status(204).end('No Content');
       break
 
     default:
