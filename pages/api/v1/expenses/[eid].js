@@ -8,6 +8,9 @@ export default (req, res) => {
   } = req;
   const expense = expenses.find(eid);
 
+  console.log(eid);
+  console.log(expenses);
+
   if (!expense) {
     res.status(404).end(`Expense ${eid} Not Found!`);
     return;
@@ -17,7 +20,7 @@ export default (req, res) => {
     case 'GET':
       res.statusCode = 200
       res.setHeader('Content-Type', 'application/json')
-      res.end(expense)
+      res.end(JSON.stringify(expense))
       break
 
     case 'PUT':
@@ -25,7 +28,7 @@ export default (req, res) => {
 
       res.statusCode = 200
       res.setHeader('Content-Type', 'application/json')
-      res.end(item)
+      res.end(JSON.stringify(item))
       break
 
     case 'DELETE':

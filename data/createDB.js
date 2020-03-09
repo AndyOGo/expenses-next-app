@@ -17,13 +17,15 @@ const createDB = (initialData = []) => {
 
       data.push(newItem);
 
+      console.log(data);
+
       return newItem;
     }
 
     find(_id) {
       if (_id) {
-        const result = data.filter(({ id }) => id === _id);
-        const [item] = result;
+        console.log(data);
+        const item = data.find(({ id }) => id === _id);
 
         return item;
       }

@@ -14,6 +14,7 @@ const ExpensesTable = () => (
               <th>Amount</th>
               <th>Currency</th>
               <th>Transaction Date</th>
+              <th>Delete</th>
             </tr>
           </thead>
 
@@ -25,6 +26,7 @@ const ExpensesTable = () => (
                 <td>{amount}</td>
                 <td>{currency}</td>
                 <td>{transaction_date}</td>
+                <td><button type="button" onClick={() => { expenses.delete(id) }}>Delete</button></td>
               </tr>
             ))}
           </tbody>

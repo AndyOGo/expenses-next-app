@@ -10,6 +10,7 @@ const ExpensesForm = () => (
     {(expenses, currencies) => {
       return (<Form
         onSubmit={expenses.insert}
+        initialValues={{ type: 'food', currency: 'CHF' }}
         render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
             <label>Recipient</label>
@@ -29,7 +30,7 @@ const ExpensesForm = () => (
             min={0} step={0.01} required />
 
             <label>Currency</label>
-            <Field name="type" component="select" placeholder="Type"
+            <Field name="currency" component="select" placeholder="Type"
             required>
               {Array.isArray(currencies.state.currencies) && currencies.state.currencies.map(({ code, name }) => (
                 <option value={code} key={code}>{`${code} - ${name}`}</option>
@@ -39,6 +40,8 @@ const ExpensesForm = () => (
             <label>Transaction Date</label>
             <Field name="transaction_date" component="input" type="date" placeholder="Transaction Date"
             required />
+
+            <button type="submit">Save</button>
           </form>
         )}
       />);
