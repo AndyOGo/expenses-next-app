@@ -57,12 +57,13 @@ export default class ExpensesContainer extends Container {
       });
 
       const { expenses } = this.state
-      const index = expenses.findIndex(({ id }) => id === _id);
+      const newExpenses = [...expenses]
+      const index = newExpenses.findIndex(({ id }) => id === _id);
 
-      expenses.slice(index, 1);
+      newExpenses.splice(index, 1);
 
       this.setState({
-        expenses: [...expenses],
+        expenses: newExpenses,
       });
     } catch(error) {
       console.log(error);
