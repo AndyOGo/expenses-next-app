@@ -1,7 +1,6 @@
 .o-table--center {
-  tbody {
-    td {
-      vertical-align: middle;
-    }
+  thead th,
+  tbody td {
+    vertical-align: middle;
   }
 }
