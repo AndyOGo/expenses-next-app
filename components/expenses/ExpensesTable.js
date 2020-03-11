@@ -1,5 +1,6 @@
 import React from 'react'
 import { Subscribe } from 'unstated'
+import { BSContainer } from '../bootstrap/BSGrid/BSGrid';
 import Table from '../table/Table';
 import ExpensesContainer from '../../container/ExpensesContainer'
 
@@ -36,7 +37,9 @@ const ExpensesTable = () => {
       {(expenses) => {
 
         return (
-          <Table columns={columns} data={expenses.state.expenses} onDelete={expenses.delete} />
+          <BSContainer>
+            <Table columns={columns} data={expenses.state.expenses} onDelete={expenses.delete} />
+          </BSContainer>
         )
       }}
     </Subscribe>
