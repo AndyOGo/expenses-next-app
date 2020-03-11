@@ -1,6 +1,8 @@
 import { useTable, useSortBy } from 'react-table';
 import useRowDelete from './hooks/useRowDelete';
+
 import BSTable from '../bootstrap/BSTable/BSTable';
+import './Table.scss';
 
 const Table = ({ columns, data, onDelete }) => {
   const {
@@ -21,7 +23,7 @@ const Table = ({ columns, data, onDelete }) => {
 
   // Render the UI for your table
   return (
-    <BSTable responsive="md" {...getTableProps()}>
+    <BSTable className="o-table--center" responsive="md" {...getTableProps()}>
       <thead>
         {headerGroups.map(headerGroup => (
           <tr {...headerGroup.getHeaderGroupProps()}>
