@@ -2,20 +2,20 @@ import { v4 as uuidv4 } from 'uuid';
 import low from 'lowdb';
 import FileSync from 'lowdb/adapters/FileSync';
 
-const withId = (item) => {
+const withId = item => {
   if (!item.id) {
     item.id = uuidv4();
   }
 
   return { ...item };
-}
+};
 
 const createDB = (path, initialData = []) => {
-  const data = initialData.map((item) => withId(item));
+  const data = initialData.map(item => withId(item));
   const adapter = new FileSync('db.json');
   const db = low(adapter);
 
-  db.defaults({ expenses: data }).write()
+  db.defaults({ expenses: data }).write();
 
   class DB {
     insert(item) {
@@ -23,20 +23,20 @@ const createDB = (path, initialData = []) => {
 
       db.get(path)
         .push(newItem)
-        .write()
+        .write();
 
       return newItem;
     }
 
     find(id) {
       if (id) {
-        return db.get(path)
+        return db
+          .get(path)
           .find({ id })
-          .value()
+          .value();
       }
 
-      return db.get(path)
-        .value();
+      return db.get(path).value();
     }
 
     update(id, item) {
@@ -45,7 +45,7 @@ const createDB = (path, initialData = []) => {
       db.get(path)
         .find({ id })
         .assign(newItem)
-        .write()
+        .write();
 
       return newItem;
     }
@@ -53,11 +53,11 @@ const createDB = (path, initialData = []) => {
     delete(id) {
       db.get(path)
         .remove({ id })
-        .write()
+        .write();
     }
   }
 
   return new DB();
-}
+};
 
 export default createDB;

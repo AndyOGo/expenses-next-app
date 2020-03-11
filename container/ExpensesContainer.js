@@ -1,21 +1,22 @@
 import { Container } from 'unstated';
 import 'cross-fetch/polyfill';
 
-const getExpensesApi = (id) => `http://localhost:3000/api/v1/expenses${id ? `/${id}` : ''}`;
+const getExpensesApi = id =>
+  `http://localhost:3000/api/v1/expenses${id ? `/${id}` : ''}`;
 
 export default class ExpensesContainer extends Container {
   state = {
     loading: false,
     expenses: [],
-  }
+  };
 
   constructor() {
-    super()
+    super();
 
     this.find();
   }
 
-  find = async (id) => {
+  find = async id => {
     try {
       const response = await fetch(getExpensesApi());
       const expenses = await response.json();
@@ -23,41 +24,41 @@ export default class ExpensesContainer extends Container {
       this.setState({
         expenses,
       });
-    } catch(error) {
+    } catch (error) {
       console.log(error);
     }
-  }
+  };
 
-  insert = async (item) => {
+  insert = async item => {
     try {
       const response = await fetch(getExpensesApi(), {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(item),
       });
       const expense = await response.json();
-      const { expenses } = this.state
+      const { expenses } = this.state;
 
       this.setState({
         expenses: [...expenses, expense],
       });
-    } catch(error) {
+    } catch (error) {
       console.log(error);
     }
-  }
+  };
 
-  update = async (id) => {}
+  update = async id => {};
 
-  delete = async (_id) => {
+  delete = async _id => {
     try {
       const response = await fetch(getExpensesApi(_id), {
         method: 'DELETE',
       });
 
-      const { expenses } = this.state
-      const newExpenses = [...expenses]
+      const { expenses } = this.state;
+      const newExpenses = [...expenses];
       const index = newExpenses.findIndex(({ id }) => id === _id);
 
       newExpenses.splice(index, 1);
@@ -65,8 +66,8 @@ export default class ExpensesContainer extends Container {
       this.setState({
         expenses: newExpenses,
       });
-    } catch(error) {
+    } catch (error) {
       console.log(error);
     }
-  }
+  };
 }
