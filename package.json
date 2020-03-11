@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "prettier --write '{pages,components,container,data}/**/*'"
   },
   "keywords": [],
   "author": "Andreas Deuschlinger",
