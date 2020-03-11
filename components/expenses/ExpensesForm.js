@@ -20,6 +20,7 @@ const ExpensesForm = () => (
         initialValues={{ type: 'food', currency: 'CHF' }}
         render={({ handleSubmit }) => (
           <BSContainer>
+            <h1>Enter expense</h1>
             <BSForm onSubmit={handleSubmit}>
               <BSFormRow>
                 <BSCol>

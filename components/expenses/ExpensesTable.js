@@ -38,6 +38,7 @@ const ExpensesTable = () => {
 
         return (
           <BSContainer>
+            <h2>All expenses</h2>
             <Table columns={columns} data={expenses.state.expenses} onDelete={expenses.delete} />
           </BSContainer>
         )
