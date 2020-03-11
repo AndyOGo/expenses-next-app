@@ -1,3 +1,5 @@
+import BSButton from '../../bootstrap/BSButton/BSButton';
+
 const useRowDelete = ({ onDelete }) => (hooks) => {
   hooks.visibleColumns.push(columns => [
     ...columns,
@@ -10,7 +12,7 @@ const useRowDelete = ({ onDelete }) => (hooks) => {
       // The cell can use the individual row's getToggleRowSelectedProps method
       // to the render a checkbox
       Cell: ({ row }) => (
-        <button type="submit" onClick={() => onDelete(row.original.id)}>Delete</button>
+        <BSButton type="button" variant="danger" onClick={() => onDelete(row.original.id)}>Delete</BSButton>
       ),
     },
   ])
