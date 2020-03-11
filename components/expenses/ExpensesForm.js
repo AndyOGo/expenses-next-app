@@ -2,8 +2,8 @@ import React from 'react'
 import { Form } from 'react-final-form'
 import { Field } from 'react-final-form-html5-validation'
 import { Subscribe } from 'unstated'
-import ExpensesContainer from '../container/ExpensesContainer'
-import CurrenciesContainer from '../container/CurrenciesContainer'
+import ExpensesContainer from '../../container/ExpensesContainer'
+import CurrenciesContainer from '../../container/CurrenciesContainer'
 
 const ExpensesForm = () => (
   <Subscribe to={[ExpensesContainer, CurrenciesContainer]}>

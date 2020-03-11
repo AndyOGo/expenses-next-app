@@ -1,5 +1,5 @@
-import ExpensesForm from '../components/ExpensesForm';
-import ExpensesTable from '../components/ExpensesTable';
+import ExpensesForm from '../components/expenses/ExpensesForm';
+import ExpensesTable from '../components/expenses/ExpensesTable';
 
 export default function Index() {
   return (

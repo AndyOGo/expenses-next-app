@@ -1,7 +1,7 @@
 import React from 'react'
 import { Subscribe } from 'unstated'
-import Table from './Table';
-import ExpensesContainer from '../container/ExpensesContainer'
+import Table from '../table/Table';
+import ExpensesContainer from '../../container/ExpensesContainer'
 
 const ExpensesTable = () => {
   const columns = React.useMemo(
