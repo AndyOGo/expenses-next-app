@@ -55,7 +55,7 @@ const ExpensesForm = () => (
                   required />
                 </BSCol>
 
-                <BSCol className="o-expenses-form__col">
+                <BSCol className="o-expenses-form__col--center">
                   <BSButton type="submit" variant="primary">Save</BSButton>
                 </BSCol>
               </BSFormRow>
