@@ -2,8 +2,15 @@ import React from 'react'
 import { Form } from 'react-final-form'
 import { Field } from 'react-final-form-html5-validation'
 import { Subscribe } from 'unstated'
+
+import BSButton from '../bootstrap/BSButton/BSButton';
+import { BSContainer, BSCol } from '../bootstrap/BSGrid/BSGrid';
+import BSForm, { BSFormRow } from '../bootstrap/BSForm/BSForm';
+import Input from '../form/Input';
 import ExpensesContainer from '../../container/ExpensesContainer'
 import CurrenciesContainer from '../../container/CurrenciesContainer'
+
+import './ExpensesForm.scss';
 
 const ExpensesForm = () => (
   <Subscribe to={[ExpensesContainer, CurrenciesContainer]}>
@@ -12,37 +19,48 @@ const ExpensesForm = () => (
         onSubmit={expenses.insert}
         initialValues={{ type: 'food', currency: 'CHF' }}
         render={({ handleSubmit }) => (
-          <form onSubmit={handleSubmit}>
-            <label>Recipient</label>
-            <Field name="recipient" component="input" type="text" placeholder="Recipient"
-            required minLength={3} maxLength={100} tooLong="That recipient is too long!"/>
+          <BSContainer>
+            <BSForm onSubmit={handleSubmit}>
+              <BSFormRow>
+                <BSCol>
+                  <Field name="recipient" label="Recipient" component={Input} type="text" placeholder="Recipient"
+                  required minLength={3} maxLength={100} tooLong="That recipient is too long!"/>
+                </BSCol>
 
-            <label>Type</label>
-            <Field name="type" component="select" placeholder="Type"
-            required>
-              <option value="food">Food</option>
-              <option value="drinks">Drinks</option>
-              <option value="other">Other</option>
-            </Field>
+                <BSCol>
+                  <Field name="type" label="Type" as="select" component={Input} placeholder="Type"
+                  required>
+                    <option value="food">Food</option>
+                    <option value="drinks">Drinks</option>
+                    <option value="other">Other</option>
+                  </Field>
+                </BSCol>
 
-            <label>Amount</label>
-            <Field name="amount" component="input" type="number" placeholder="Amount"
-            min={0} step={0.01} required />
+                <BSCol>
+                  <Field name="amount" label="Amount" component={Input} type="number" placeholder="Amount"
+                  min={0} step={0.01} required />
+                </BSCol>
 
-            <label>Currency</label>
-            <Field name="currency" component="select" placeholder="Type"
-            required>
-              {Array.isArray(currencies.state.currencies) && currencies.state.currencies.map(({ code, name }) => (
-                <option value={code} key={code}>{`${code} - ${name}`}</option>
-              ))}
-            </Field>
+                <BSCol>
+                  <Field name="currency" label="Currency" as="select" component={Input} placeholder="Currency"
+                  required>
+                    {Array.isArray(currencies.state.currencies) && currencies.state.currencies.map(({ code, name }) => (
+                      <option value={code} key={code}>{`${code} - ${name}`}</option>
+                    ))}
+                  </Field>
+                </BSCol>
 
-            <label>Transaction Date</label>
-            <Field name="transaction_date" component="input" type="date" placeholder="Transaction Date"
-            required />
+                <BSCol>
+                  <Field name="transaction_date" label="Transaction Date" component={Input} type="date" placeholder="Transaction Date"
+                  required />
+                </BSCol>
 
-            <button type="submit">Save</button>
-          </form>
+                <BSCol className="o-expenses-form__col">
+                  <BSButton type="submit" variant="primary">Save</BSButton>
+                </BSCol>
+              </BSFormRow>
+            </BSForm>
+          </BSContainer>
         )}
       />);
     }}
