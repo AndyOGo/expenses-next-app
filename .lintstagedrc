@@ -1,3 +1,4 @@
 {
   "**/*.(js|css|scss)": ["prettier --write"],
+  "README.md": ["doctoc --title '**Table of Contents**'", "prettier --write"],
 }
