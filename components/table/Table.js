@@ -1,22 +1,8 @@
-import { useTable, useSortBy } from 'react-table'
+import { useTable, useSortBy } from 'react-table';
+import useRowDelete from './hooks/useRowDelete';
 
-const useDeleteRow = ({ onDelete }) => (hooks) => {
-  hooks.visibleColumns.push(columns => [
-    ...columns,
-    // Let's make a column for delete
-    {
-      id: 'delete',
-      // The header can use the table's getToggleAllRowsSelectedProps method
-      // to render a checkbox
-      Header: 'Delete',
-      // The cell can use the individual row's getToggleRowSelectedProps method
-      // to the render a checkbox
-      Cell: ({ row }) => (
-        <button type="submit" onClick={() => onDelete(row.original.id)}>Delete</button>
-      ),
-    },
-  ])
-}
+import BSTable from '../bootstrap/BSTable/BSTable';
+import './Table.scss';
 
 const Table = ({ columns, data, onDelete }) => {
   const {
@@ -32,12 +18,12 @@ const Table = ({ columns, data, onDelete }) => {
       data,
     },
     useSortBy,
-    useDeleteRow({ onDelete }),
+    useRowDelete({ onDelete }),
   )
 
   // Render the UI for your table
   return (
-    <table {...getTableProps()}>
+    <BSTable className="o-table--center" responsive="md" {...getTableProps()}>
       <thead>
         {headerGroups.map(headerGroup => (
           <tr {...headerGroup.getHeaderGroupProps()}>
@@ -83,7 +69,7 @@ const Table = ({ columns, data, onDelete }) => {
           </tr>
         ))}
       </tfoot>
-    </table>
+    </BSTable>
   )
 }
 
