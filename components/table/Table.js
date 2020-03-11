@@ -1,6 +1,7 @@
-import { useTable, useSortBy } from 'react-table';
-import useRowDelete from './hooks/useRowDelete';
+import { useTable, useSortBy, useGlobalFilter } from 'react-table';
 
+import GlobalFilter from './hooks/GlobalFilter';
+import useRowDelete from './hooks/useRowDelete';
 import BSTable from '../bootstrap/BSTable/BSTable';
 import './Table.scss';
 
@@ -12,11 +13,16 @@ const Table = ({ columns, data, onDelete }) => {
     footerGroups,
     rows,
     prepareRow,
+    state,
+    visibleColumns,
+    preGlobalFilteredRows,
+    setGlobalFilter,
   } = useTable(
     {
       columns,
       data,
     },
+    useGlobalFilter,
     useSortBy,
     useRowDelete({ onDelete })
   );
@@ -40,6 +46,20 @@ const Table = ({ columns, data, onDelete }) => {
             ))}
           </tr>
         ))}
+        <tr>
+          <th
+            colSpan={visibleColumns.length}
+            style={{
+              textAlign: 'left',
+            }}
+          >
+            <GlobalFilter
+              preGlobalFilteredRows={preGlobalFilteredRows}
+              globalFilter={state.globalFilter}
+              setGlobalFilter={setGlobalFilter}
+            />
+          </th>
+        </tr>
       </thead>
       <tbody {...getTableBodyProps()}>
         {rows.map((row, i) => {
