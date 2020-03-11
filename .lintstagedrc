@@ -1,3 +1,3 @@
 {
-  "**/*.(js|css|scss)": ["prettier"],
+  "**/*.(js|css|scss)": ["prettier --write"],
 }

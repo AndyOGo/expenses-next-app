@@ -1,15 +1,15 @@
-import { BSFormGroup, BSFormControl, BSFormLabel } from '../bootstrap/BSForm/BSForm';
+import {
+  BSFormGroup,
+  BSFormControl,
+  BSFormLabel,
+} from '../bootstrap/BSForm/BSForm';
 
-const Input = ({
-  input,
-  meta,
-  label,
-  as = 'input',
-  children,
-}) => (
-  <BSFormGroup controlId={input.name} >
+const Input = ({ input, meta, label, as = 'input', children }) => (
+  <BSFormGroup controlId={input.name}>
     <BSFormLabel>{label}</BSFormLabel>
-    <BSFormControl {...input} as={as}>{children}</BSFormControl>
+    <BSFormControl {...input} as={as}>
+      {children}
+    </BSFormControl>
   </BSFormGroup>
 );
 

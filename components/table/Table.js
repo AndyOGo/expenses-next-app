@@ -18,8 +18,8 @@ const Table = ({ columns, data, onDelete }) => {
       data,
     },
     useSortBy,
-    useRowDelete({ onDelete }),
-  )
+    useRowDelete({ onDelete })
+  );
 
   // Render the UI for your table
   return (
@@ -34,11 +34,7 @@ const Table = ({ columns, data, onDelete }) => {
                 {column.render('Header')}
                 {/* Add a sort direction indicator */}
                 <span>
-                  {column.isSorted
-                    ? column.isSortedDesc
-                      ? ' 🔽'
-                      : ' 🔼'
-                    : ''}
+                  {column.isSorted ? (column.isSortedDesc ? ' 🔽' : ' 🔼') : ''}
                 </span>
               </th>
             ))}
@@ -46,19 +42,16 @@ const Table = ({ columns, data, onDelete }) => {
         ))}
       </thead>
       <tbody {...getTableBodyProps()}>
-        {rows.map(
-          (row, i) => {
-            prepareRow(row);
-            return (
-              <tr {...row.getRowProps()}>
-                {row.cells.map(cell => {
-                  return (
-                    <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
-                  )
-                })}
-              </tr>
-            )}
-        )}
+        {rows.map((row, i) => {
+          prepareRow(row);
+          return (
+            <tr {...row.getRowProps()}>
+              {row.cells.map(cell => {
+                return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>;
+              })}
+            </tr>
+          );
+        })}
       </tbody>
       <tfoot>
         {footerGroups.map(group => (
@@ -70,7 +63,7 @@ const Table = ({ columns, data, onDelete }) => {
         ))}
       </tfoot>
     </BSTable>
-  )
-}
+  );
+};
 
 export default Table;

@@ -16,7 +16,7 @@ export default function Index() {
         </BSCard.Header>
 
         <BSCard.Body>
-         <ExpensesTable />
+          <ExpensesTable />
         </BSCard.Body>
       </BSCard>
     </div>

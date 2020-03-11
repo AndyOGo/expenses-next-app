@@ -16,22 +16,22 @@ export default (req, res) => {
   switch (method) {
     case 'GET':
       res.status(200).json(expense);
-      break
+      break;
 
     case 'PUT':
       const item = expenses.update(eid, body);
 
-      res.status(200).json(item)
-      break
+      res.status(200).json(item);
+      break;
 
     case 'DELETE':
       expenses.delete(eid);
 
       res.status(204).end('No Content');
-      break
+      break;
 
     default:
-      res.setHeader('Allow', ['PUT', 'DELETE'])
-      res.status(405).end(`Method ${method} Not Allowed`)
+      res.setHeader('Allow', ['PUT', 'DELETE']);
+      res.status(405).end(`Method ${method} Not Allowed`);
   }
-}
+};

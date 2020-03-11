@@ -5,19 +5,23 @@ export default class CurrenciesContainer extends Container {
   state = {
     loading: false,
     currencies: [],
-  }
+  };
 
   constructor() {
-    super()
+    super();
 
     this.loadCurrencies();
   }
 
   loadCurrencies = async () => {
     try {
-      const response = await fetch('https://openexchangerates.org/api/currencies.json');
+      const response = await fetch(
+        'https://openexchangerates.org/api/currencies.json'
+      );
       const data = await response.json();
-      const currencies = Object.keys(data).map(code => ({ code, name: data[code] })).sort();
+      const currencies = Object.keys(data)
+        .map(code => ({ code, name: data[code] }))
+        .sort();
 
       this.setState({
         currencies,
@@ -25,5 +29,5 @@ export default class CurrenciesContainer extends Container {
     } catch (error) {
       console.error(error);
     }
-  }
+  };
 }
