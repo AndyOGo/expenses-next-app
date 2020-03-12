@@ -111,7 +111,7 @@ For client-side logging the [web `console` API](https://developer.mozilla.org/en
 
 ### JavaScript, SCSS
 
-JavaScript is linted and autoformatted by [`prettier`](https://prettier.io/).
+JavaScript and SCSS is linted and autoformatted by [`prettier`](https://prettier.io/).
 
 ### Git Commit Messages
 
@@ -125,4 +125,4 @@ Basic configuration for various editors is provided by an [`editorconfig`](https
 
 ### Git Hooks
 
-We use [`husky`](https://github.com/typicode/husky#readme) and [`lintstaged`](https://github.com/okonet/lint-staged#readme) to enforce those styleguide rules and run unit tests for each commit.
+We use [`husky`](https://github.com/typicode/husky#readme) and [`lintstaged`](https://github.com/okonet/lint-staged#readme) to enforce those styleguide rules for each commit.
