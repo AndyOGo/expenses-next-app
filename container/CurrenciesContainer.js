@@ -39,6 +39,7 @@ export default class CurrenciesContainer extends Container {
 
   handleError(error) {
     console.error(error);
+    console.count('Currencies error');
 
     const { errors } = this.state;
 

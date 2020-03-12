@@ -120,6 +120,7 @@ export default class ExpensesContainer extends Container {
 
   handleError(error) {
     console.error(error);
+    console.count('Expenses error');
 
     const { errors } = this.state;
 
