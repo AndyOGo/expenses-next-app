@@ -1,7 +1,7 @@
 import originalFetch from 'cross-fetch';
 import fetchRetry from 'fetch-retry';
 
-const fetch = fetchRetry(originalFetch, {
+const enhancedFetch = fetchRetry(originalFetch, {
   retryDelay: function(attempt, error, response) {
     return Math.pow(2, attempt) * 1000; // 1000, 2000, 4000
   },
@@ -13,5 +13,16 @@ const fetch = fetchRetry(originalFetch, {
     }
   },
 });
+
+function status(res) {
+  if (!res.ok) {
+    throw new Error(res.statusText);
+  }
+  return res;
+}
+
+function fetch(...args) {
+  return enhancedFetch(...args).then(status);
+}
 
 export default fetch;
