@@ -32,6 +32,33 @@ export default class ExpensesContainer extends Container {
 
   insert = async item => {
     try {
+      const { recipient, type, amount, currency, transaction_date } = item;
+
+      console.assert(recipient, 'Recipient is required!', recipient);
+      console.assert(
+        recipient.length >= 3,
+        'Recipient is too short!',
+        recipient.length
+      );
+
+      console.assert(type, 'Type is required!', type);
+
+      console.assert(amount, 'Amount is required!', amount);
+      console.assert(amount > 0, 'Amount is lower or equal to 0!', amount);
+
+      console.assert(currency, 'Currency is required!');
+
+      console.assert(
+        transaction_date,
+        'Transaction date is required!',
+        transaction_date
+      );
+      console.assert(
+        new Date(transaction_date),
+        "Transaction date can't be parsed!",
+        new Date(transaction_date)
+      );
+
       const response = await fetch(getExpensesApi(), {
         method: 'POST',
         headers: {
