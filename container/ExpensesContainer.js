@@ -8,6 +8,7 @@ export default class ExpensesContainer extends Container {
   state = {
     loading: false,
     expenses: [],
+    errors: [],
   };
 
   constructor() {
@@ -25,7 +26,7 @@ export default class ExpensesContainer extends Container {
         expenses,
       });
     } catch (error) {
-      console.log(error);
+      this.handleError(error);
     }
   };
 
@@ -45,7 +46,7 @@ export default class ExpensesContainer extends Container {
         expenses: [...expenses, expense],
       });
     } catch (error) {
-      console.log(error);
+      this.handleError(error);
     }
   };
 
@@ -67,7 +68,17 @@ export default class ExpensesContainer extends Container {
         expenses: newExpenses,
       });
     } catch (error) {
-      console.log(error);
+      this.handleError(error);
     }
   };
+
+  handleError(error) {
+    console.error(error);
+
+    const { errors } = this.state;
+
+    this.setState({
+      errors: [...errors, error],
+    });
+  }
 }

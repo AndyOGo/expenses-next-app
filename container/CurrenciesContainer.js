@@ -5,6 +5,7 @@ export default class CurrenciesContainer extends Container {
   state = {
     loading: false,
     currencies: [],
+    errors: [],
   };
 
   constructor() {
@@ -27,7 +28,17 @@ export default class CurrenciesContainer extends Container {
         currencies,
       });
     } catch (error) {
-      console.error(error);
+      this.handleError(error);
     }
   };
+
+  handleError(error) {
+    console.error(error);
+
+    const { errors } = this.state;
+
+    this.setState({
+      errors: [...errors, error],
+    });
+  }
 }
