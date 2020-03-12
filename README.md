@@ -77,6 +77,8 @@ You can check out [the Next.js GitHub repository](https://github.com/zeit/next.j
 │   ├── api/v1/expenses           # Expenses RESTful API
 │   ├── _app.js                   # Custom App
 │   └── index.js                  # Index Route
+├── utils                         # Utilities
+│   ├── fetch.js                  # Fetch with retry and network and server error handling
 └── [...]                         # Various rc files
 ```
 
