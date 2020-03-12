@@ -10,6 +10,10 @@ This is a [Next.js](https://nextjs.org/) project to track expenses.
 - [Getting Started](#getting-started)
 - [Learn More](#learn-more)
 - [Project Structure](#project-structure)
+- [Concepts](#concepts)
+  - [State](#state)
+  - [Headless Components](#headless-components)
+  - [Client-side Validation](#client-side-validation)
 - [Styleguides](#styleguides)
   - [JavaScript, SCSS](#javascript-scss)
   - [Git Commit Messages](#git-commit-messages)
@@ -74,6 +78,22 @@ You can check out [the Next.js GitHub repository](https://github.com/zeit/next.j
 │   └── index.js                  # Index Route
 └── [...]                         # Various rc files
 ```
+
+## Concepts
+
+### State
+
+Global State is managed with [`unstated`](https://github.com/jamiebuilds/unstated).
+
+### Headless Components
+
+Interface Logic of [`react-final-form`](https://final-form.org/react) and [`react-table`](https://github.com/tannerlinsley/react-table) are used to drive the UI state.
+
+[`react-bootstrap`](https://react-bootstrap.netlify.com/) and [`bootstrap`](https://getbootstrap.com/) are used to visually display the UI.
+
+### Client-side Validation
+
+Built-in [HTML5 Form Validation](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation#Using_built-in_form_validation) is implemented by utilizing [`react-final-form-html5-validation`](https://github.com/final-form/react-final-form-html5-validation).
 
 ## Styleguides
 
