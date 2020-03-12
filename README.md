@@ -14,6 +14,7 @@ This is a [Next.js](https://nextjs.org/) project to track expenses.
   - [State](#state)
   - [Headless Components](#headless-components)
   - [Client-side Validation](#client-side-validation)
+  - [API](#api)
 - [Styleguides](#styleguides)
   - [JavaScript, SCSS](#javascript-scss)
   - [Git Commit Messages](#git-commit-messages)
@@ -83,7 +84,7 @@ You can check out [the Next.js GitHub repository](https://github.com/zeit/next.j
 
 ### State
 
-Global State is managed with [`unstated`](https://github.com/jamiebuilds/unstated).
+Global state is managed with [`unstated`](https://github.com/jamiebuilds/unstated).
 
 ### Headless Components
 
@@ -94,6 +95,10 @@ Interface Logic of [`react-final-form`](https://final-form.org/react) and [`reac
 ### Client-side Validation
 
 Built-in [HTML5 Form Validation](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation#Using_built-in_form_validation) is implemented by utilizing [`react-final-form-html5-validation`](https://github.com/final-form/react-final-form-html5-validation).
+
+### API
+
+RESTful APIs are consumed with [`fetch`](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API), network and `5xx` errors may be mitigated with [`fetch-retry`](https://github.com/jonbern/fetch-retry).
 
 ## Styleguides
 
