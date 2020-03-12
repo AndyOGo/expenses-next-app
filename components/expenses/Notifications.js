@@ -11,11 +11,14 @@ const Notification = ({ children, header }) => {
   const [date] = useState(Date.now());
 
   return (
-    <BSToast onClose={() => setShow(false)} show={show} delay={3000} autohide>
+    <BSToast onClose={() => setShow(false)} show={show} delay={3000}>
       <BSToast.Header>
-        <img src="holder.js/20x20?text=%20" className="rounded mr-2" alt="" />
+        <div
+          className="bg-danger rounded mr-2"
+          style={{ width: '20px', height: '20px' }}
+        />
         <strong className="mr-auto">{header}</strong>
-        <small>
+        <small className="ml-2">
           <TimeAgo date={date} />
         </small>
       </BSToast.Header>
