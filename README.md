@@ -15,6 +15,7 @@ This is a [Next.js](https://nextjs.org/) project to track expenses.
   - [Headless Components](#headless-components)
   - [Client-side Validation](#client-side-validation)
   - [API](#api)
+  - [Logging](#logging)
 - [Styleguides](#styleguides)
   - [JavaScript, SCSS](#javascript-scss)
   - [Git Commit Messages](#git-commit-messages)
@@ -101,6 +102,10 @@ Built-in [HTML5 Form Validation](https://developer.mozilla.org/en-US/docs/Learn/
 ### API
 
 RESTful APIs are consumed with [`fetch`](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API), network and `5xx` errors may be mitigated with [`fetch-retry`](https://github.com/jonbern/fetch-retry).
+
+### Logging
+
+For client-side logging the [web `console` API](https://developer.mozilla.org/en-US/docs/Web/API/Console) is used.
 
 ## Styleguides
 
