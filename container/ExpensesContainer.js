@@ -1,5 +1,5 @@
 import { Container } from 'unstated';
-import 'cross-fetch/polyfill';
+import fetch from '../utils/fetch';
 
 const getExpensesApi = id =>
   `http://localhost:3000/api/v1/expenses${id ? `/${id}` : ''}`;
