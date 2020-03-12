@@ -20,24 +20,33 @@ export default class ExpensesContainer extends Container {
   }
 
   load = async () => {
+    const timeLabel = 'Load expenses';
+
     try {
+      console.time(timeLabel);
       const response = await fetch(getExpensesApi());
+      console.timeLog(timeLabel);
       const expenses = await response.json();
 
+      console.timeLog(timeLabel);
       this.setState(
         {
           expenses,
         },
         () => {
           console.info('%cLoaded expenses %o', 'color: green;', expenses);
+          console.timeEnd(timeLabel);
         }
       );
     } catch (error) {
       this.handleError(error);
+      console.timeLog(timeEnd);
     }
   };
 
   insert = async item => {
+    const timeLabel = 'Insert expense';
+
     try {
       const { recipient, type, amount, currency, transaction_date } = item;
 
@@ -66,6 +75,7 @@ export default class ExpensesContainer extends Container {
         new Date(transaction_date)
       );
 
+      console.time(timeLabel);
       const response = await fetch(getExpensesApi(), {
         method: 'POST',
         headers: {
@@ -73,19 +83,23 @@ export default class ExpensesContainer extends Container {
         },
         body: JSON.stringify(item),
       });
+      console.timeLog(timeLabel);
       const expense = await response.json();
       const { expenses } = this.state;
 
+      console.timeLog(timeLabel);
       this.setState(
         {
           expenses: [...expenses, expense],
         },
         () => {
           console.info('%cInserted expense %o', 'color: green;', item);
+          console.timeEnd(timeLabel);
         }
       );
     } catch (error) {
       this.handleError(error);
+      console.timeEnd(timeLabel);
     }
   };
 
@@ -94,7 +108,10 @@ export default class ExpensesContainer extends Container {
   };
 
   delete = async _id => {
+    const timeLabel = 'Delete expense';
+
     try {
+      console.time(timeLabel);
       const response = await fetch(getExpensesApi(_id), {
         method: 'DELETE',
       });
@@ -105,22 +122,27 @@ export default class ExpensesContainer extends Container {
 
       newExpenses.splice(index, 1);
 
+      console.timeLog(timeLabel);
       this.setState(
         {
           expenses: newExpenses,
         },
         () => {
           console.info('%cDeleted expense%c %s', 'color: green;', '', _id);
+          console.timeEnd(timeLabel);
         }
       );
     } catch (error) {
       this.handleError(error);
+      console.timeEnd(timeLabel);
     }
   };
 
   handleError(error) {
+    console.group();
     console.error(error);
     console.count('Expenses error');
+    console.groupEnd();
 
     const { errors } = this.state;
 
