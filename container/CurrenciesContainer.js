@@ -1,5 +1,5 @@
 import { Container } from 'unstated';
-import 'cross-fetch/polyfill';
+import fetch from '../utils/fetch';
 
 export default class CurrenciesContainer extends Container {
   state = {
