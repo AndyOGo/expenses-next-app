@@ -2,7 +2,9 @@ import { Container } from 'unstated';
 import fetch from '../utils/fetch';
 
 const getExpensesApi = id =>
-  `http://localhost:3000/api/v1/expenses${id ? `/${id}` : ''}`;
+  `http://localhost:3000/api/v1/expenses${
+    typeof id === 'string' && id ? `/${id}` : ''
+  }`;
 
 export default class ExpensesContainer extends Container {
   state = {
@@ -14,10 +16,10 @@ export default class ExpensesContainer extends Container {
   constructor() {
     super();
 
-    this.find();
+    this.load();
   }
 
-  find = async id => {
+  load = async () => {
     try {
       const response = await fetch(getExpensesApi());
       const expenses = await response.json();
@@ -27,7 +29,7 @@ export default class ExpensesContainer extends Container {
           expenses,
         },
         () => {
-          console.info('%cFound expenses %o', 'color: green;', expenses);
+          console.info('%cLoaded expenses %o', 'color: green;', expenses);
         }
       );
     } catch (error) {
