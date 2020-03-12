@@ -22,9 +22,14 @@ export default class ExpensesContainer extends Container {
       const response = await fetch(getExpensesApi());
       const expenses = await response.json();
 
-      this.setState({
-        expenses,
-      });
+      this.setState(
+        {
+          expenses,
+        },
+        () => {
+          console.info('%cFound expenses %o', 'color: green;', expenses);
+        }
+      );
     } catch (error) {
       this.handleError(error);
     }
@@ -69,15 +74,22 @@ export default class ExpensesContainer extends Container {
       const expense = await response.json();
       const { expenses } = this.state;
 
-      this.setState({
-        expenses: [...expenses, expense],
-      });
+      this.setState(
+        {
+          expenses: [...expenses, expense],
+        },
+        () => {
+          console.info('%cInserted expense %o', 'color: green;', item);
+        }
+      );
     } catch (error) {
       this.handleError(error);
     }
   };
 
-  update = async id => {};
+  update = async id => {
+    console.warn('Update expense not implemented yet.');
+  };
 
   delete = async _id => {
     try {
@@ -91,9 +103,14 @@ export default class ExpensesContainer extends Container {
 
       newExpenses.splice(index, 1);
 
-      this.setState({
-        expenses: newExpenses,
-      });
+      this.setState(
+        {
+          expenses: newExpenses,
+        },
+        () => {
+          console.info('%cDeleted expense%c %s', 'color: green;', '', _id);
+        }
+      );
     } catch (error) {
       this.handleError(error);
     }

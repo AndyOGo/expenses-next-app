@@ -24,9 +24,14 @@ export default class CurrenciesContainer extends Container {
         .map(code => ({ code, name: data[code] }))
         .sort();
 
-      this.setState({
-        currencies,
-      });
+      this.setState(
+        {
+          currencies,
+        },
+        () => {
+          console.info('%cLoaded currencies %o', 'color: green;', currencies);
+        }
+      );
     } catch (error) {
       this.handleError(error);
     }
