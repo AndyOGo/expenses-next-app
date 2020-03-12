@@ -5,6 +5,7 @@ import BSOverlayTrigger from '../components/bootstrap/BSOverlayTrigger/BSOverlay
 import BSTooltip from '../components/bootstrap/BSTooltip/BSTooltip';
 import BSScreenReaders from '../components/bootstrap/BSScreenReaders/BSScreenReaders';
 import GithubMark from '../assets/github-mark.svg';
+import Notifications from '../components/expenses/Notifications';
 import ExpensesForm from '../components/expenses/ExpensesForm';
 import ExpensesTable from '../components/expenses/ExpensesTable';
 
@@ -32,6 +33,8 @@ export default function Index() {
           </BSNav.Link>
         </BSOverlayTrigger>
       </BSNavbar>
+
+      <Notifications />
 
       <BSCard>
         <BSCard.Header>
