@@ -12,6 +12,19 @@ import CurrenciesContainer from '../../container/CurrenciesContainer';
 
 import './ExpensesForm.scss';
 
+const toDate = value => new Date(value);
+const toDateString = date =>
+  date
+    ? `${date.getFullYear().toString()}-${(date.getMonth() + 1)
+        .toString()
+        .padStart(2, 0)}-${date
+        .getDate()
+        .toString()
+        .padStart(2, 0)}`
+    : '';
+const toNumber = value => +value;
+const toString = value => '' + value;
+
 const ExpensesForm = () => (
   <Subscribe to={[ExpensesContainer, CurrenciesContainer]}>
     {(expenses, currencies) => {
@@ -60,6 +73,8 @@ const ExpensesForm = () => (
                       component={Input}
                       type="number"
                       placeholder="Amount"
+                      format={toString}
+                      parse={toNumber}
                       min={0}
                       step={0.01}
                       required
@@ -92,6 +107,8 @@ const ExpensesForm = () => (
                       component={Input}
                       type="date"
                       placeholder="Transaction Date"
+                      format={toDateString}
+                      parse={toDate}
                       required
                     />
                   </BSCol>
