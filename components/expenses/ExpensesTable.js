@@ -25,7 +25,9 @@ const ExpensesTable = () => {
       },
       {
         Header: 'Transaction Date',
-        accessor: 'transaction_date',
+        accessor: ({ transaction_date }) =>
+          new Date(transaction_date).toLocaleDateString(),
+        // accessor: 'transaction_date',
         // sortType: 'datetime',
       },
     ],
