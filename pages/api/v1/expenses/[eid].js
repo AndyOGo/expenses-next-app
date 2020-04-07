@@ -31,7 +31,7 @@ export default (req, res) => {
       break;
 
     default:
-      res.setHeader('Allow', ['PUT', 'DELETE']);
+      res.setHeader('Allow', ['GET', 'PUT', 'DELETE']);
       res.status(405).end(`Method ${method} Not Allowed`);
   }
 };
