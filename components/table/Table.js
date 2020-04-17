@@ -5,7 +5,7 @@ import useRowDelete from './hooks/useRowDelete';
 import BSTable from '../bootstrap/BSTable/BSTable';
 import './Table.scss';
 
-const Table = ({ columns, data, onDelete }) => {
+const Table = ({ columns, data, onDelete, deleteText }) => {
   const {
     getTableProps,
     getTableBodyProps,
@@ -24,7 +24,7 @@ const Table = ({ columns, data, onDelete }) => {
     },
     useGlobalFilter,
     useSortBy,
-    useRowDelete({ onDelete })
+    useRowDelete({ onDelete, deleteText })
   );
 
   // Render the UI for your table

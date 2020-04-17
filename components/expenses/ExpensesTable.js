@@ -1,30 +1,32 @@
 import React from 'react';
 import { Subscribe } from 'unstated';
+
+import { withTranslation } from '../../i18n';
 import { BSContainer } from '../bootstrap/BSGrid/BSGrid';
 import Table from '../table/Table';
 import ExpensesContainer from '../../container/ExpensesContainer';
 
-const ExpensesTable = () => {
+const ExpensesTable = ({ t }) => {
   const columns = React.useMemo(
     () => [
       {
-        Header: 'Recipient',
+        Header: t('Recipient'),
         accessor: 'recipient',
       },
       {
-        Header: 'Type',
+        Header: t('Type'),
         accessor: 'type',
       },
       {
-        Header: 'Amount',
+        Header: t('Amount'),
         accessor: 'amount',
       },
       {
-        Header: 'Currency',
+        Header: t('Currency'),
         accessor: 'currency',
       },
       {
-        Header: 'Transaction Date',
+        Header: t('Transaction Date'),
         accessor: ({ transaction_date }) =>
           new Date(transaction_date).toLocaleDateString(),
         // accessor: 'transaction_date',
@@ -39,11 +41,12 @@ const ExpensesTable = () => {
       {expenses => {
         return (
           <BSContainer>
-            <h2>All expenses</h2>
+            <h2>{t('All expenses')}</h2>
             <Table
               columns={columns}
               data={expenses.state.expenses}
               onDelete={expenses.delete}
+              deleteText={t('Delete')}
             />
           </BSContainer>
         );
@@ -52,4 +55,4 @@ const ExpensesTable = () => {
   );
 };
 
-export default ExpensesTable;
+export default withTranslation()(ExpensesTable);

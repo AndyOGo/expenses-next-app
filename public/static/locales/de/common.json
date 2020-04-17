@@ -10,5 +10,6 @@
   "Amount": "Betrag",
   "Currency": "Währung",
   "Transaction Date": "Transaktionsdatum",
-  "Save": "Speichern"
+  "Save": "Speichern",
+  "Delete": "Löschen"
 }

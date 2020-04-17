@@ -10,5 +10,6 @@
   "Amount": "Amount",
   "Currency": "Currency",
   "Transaction Date": "Transaction Date",
-  "Save": "Save"
+  "Save": "Save",
+  "Delete": "Delete"
 }
