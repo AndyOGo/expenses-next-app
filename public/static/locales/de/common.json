@@ -11,5 +11,8 @@
   "Currency": "Währung",
   "Transaction Date": "Transaktionsdatum",
   "Save": "Speichern",
-  "Delete": "Löschen"
+  "Delete": "Löschen",
+  "Search": "Suche",
+  "records": "{{count}} Eintrag...",
+  "records_plural": "{{count}} Einträge..."
 }

@@ -11,5 +11,8 @@
   "Currency": "Currency",
   "Transaction Date": "Transaction Date",
   "Save": "Save",
-  "Delete": "Delete"
+  "Delete": "Delete",
+  "Search": "Search",
+  "records": "{{count}} record...",
+  "records_plural": "{{count}} records..."
 }
