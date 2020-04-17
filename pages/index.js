@@ -9,7 +9,7 @@ import Notifications from '../components/expenses/Notifications';
 import ExpensesForm from '../components/expenses/ExpensesForm';
 import ExpensesTable from '../components/expenses/ExpensesTable';
 
-export default function Index() {
+function Index() {
   return (
     <div>
       <BSNavbar bg="dark" variant="dark">
@@ -48,3 +48,9 @@ export default function Index() {
     </div>
   );
 }
+
+Index.getInitialProps = async () => ({
+  namespacesRequired: ['common'],
+});
+
+export default Index;
