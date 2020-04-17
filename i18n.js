@@ -15,4 +15,5 @@ export const {
   appWithTranslation,
   withTranslation,
   Link,
+  i18n,
 } = NextI18NextInstance;
