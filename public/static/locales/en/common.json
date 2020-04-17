@@ -1,0 +1,18 @@
+{
+  "Expenses": "Expenses",
+  "Select Language": "Select Language",
+  "Enter expense": "Enter expense",
+  "Recipient": "Recipient",
+  "Type": "Type",
+  "Food": "Food",
+  "Drinks": "Drinks",
+  "Other": "Other",
+  "Amount": "Amount",
+  "Currency": "Currency",
+  "Transaction Date": "Transaction Date",
+  "Save": "Save",
+  "Delete": "Delete",
+  "Search": "Search",
+  "records": "{{count}} record...",
+  "records_plural": "{{count}} records..."
+}

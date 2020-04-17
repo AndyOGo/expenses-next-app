@@ -1,6 +1,6 @@
 import BSButton from '../../bootstrap/BSButton/BSButton';
 
-const useRowDelete = ({ onDelete }) => hooks => {
+const useRowDelete = ({ onDelete, deleteText }) => hooks => {
   hooks.visibleColumns.push(columns => [
     ...columns,
     // Let's make a column for delete
@@ -8,7 +8,7 @@ const useRowDelete = ({ onDelete }) => hooks => {
       id: 'delete',
       // The header can use the table's getToggleAllRowsSelectedProps method
       // to render a checkbox
-      Header: 'Delete',
+      Header: deleteText,
       // The cell can use the individual row's getToggleRowSelectedProps method
       // to the render a checkbox
       Cell: ({ row }) => (
@@ -17,7 +17,7 @@ const useRowDelete = ({ onDelete }) => hooks => {
           variant="danger"
           onClick={() => onDelete(row.original.id)}
         >
-          Delete
+          {deleteText}
         </BSButton>
       ),
     },

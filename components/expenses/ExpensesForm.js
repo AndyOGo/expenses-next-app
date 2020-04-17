@@ -1,8 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Form } from 'react-final-form';
 import { Field } from 'react-final-form-html5-validation';
 import { Subscribe } from 'unstated';
 
+import { withTranslation } from '../../i18n';
 import BSButton from '../bootstrap/BSButton/BSButton';
 import { BSContainer, BSCol } from '../bootstrap/BSGrid/BSGrid';
 import BSForm, { BSFormRow } from '../bootstrap/BSForm/BSForm';
@@ -25,7 +27,7 @@ const toDateString = date =>
 const toNumber = value => +value;
 const toString = value => '' + value;
 
-const ExpensesForm = () => (
+const ExpensesForm = ({ t }) => (
   <Subscribe to={[ExpensesContainer, CurrenciesContainer]}>
     {(expenses, currencies) => {
       return (
@@ -34,16 +36,16 @@ const ExpensesForm = () => (
           initialValues={{ type: 'food', currency: 'CHF' }}
           render={({ handleSubmit }) => (
             <BSContainer>
-              <h1>Enter expense</h1>
+              <h1>{t('Enter expense')}</h1>
               <BSForm onSubmit={handleSubmit}>
                 <BSFormRow>
                   <BSCol>
                     <Field
                       name="recipient"
-                      label="Recipient"
+                      label={t('Recipient')}
                       component={Input}
                       type="text"
-                      placeholder="Recipient"
+                      placeholder={t('Recipient')}
                       required
                       minLength={3}
                       maxLength={100}
@@ -54,25 +56,25 @@ const ExpensesForm = () => (
                   <BSCol>
                     <Field
                       name="type"
-                      label="Type"
+                      label={t('Type')}
                       as="select"
                       component={Input}
-                      placeholder="Type"
+                      placeholder={t('Type')}
                       required
                     >
-                      <option value="food">Food</option>
-                      <option value="drinks">Drinks</option>
-                      <option value="other">Other</option>
+                      <option value="food">{t('Food')}</option>
+                      <option value="drinks">{t('Drinks')}</option>
+                      <option value="other">{t('Other')}</option>
                     </Field>
                   </BSCol>
 
                   <BSCol>
                     <Field
                       name="amount"
-                      label="Amount"
+                      label={t('Amount')}
                       component={Input}
                       type="number"
-                      placeholder="Amount"
+                      placeholder={t('Amount')}
                       format={toString}
                       parse={toNumber}
                       min={0}
@@ -84,10 +86,10 @@ const ExpensesForm = () => (
                   <BSCol>
                     <Field
                       name="currency"
-                      label="Currency"
+                      label={t('Currency')}
                       as="select"
                       component={Input}
-                      placeholder="Currency"
+                      placeholder={t('Currency')}
                       required
                     >
                       {Array.isArray(currencies.state.currencies) &&
@@ -103,10 +105,10 @@ const ExpensesForm = () => (
                   <BSCol>
                     <Field
                       name="transaction_date"
-                      label="Transaction Date"
+                      label={t('Transaction Date')}
                       component={Input}
                       type="date"
-                      placeholder="Transaction Date"
+                      placeholder={t('Transaction Date')}
                       format={toDateString}
                       parse={toDate}
                       required
@@ -115,7 +117,7 @@ const ExpensesForm = () => (
 
                   <BSCol className="o-expenses-form__col--center">
                     <BSButton type="submit" variant="primary">
-                      Save
+                      {t('Save')}
                     </BSButton>
                   </BSCol>
                 </BSFormRow>
@@ -128,4 +130,8 @@ const ExpensesForm = () => (
   </Subscribe>
 );
 
-export default ExpensesForm;
+ExpensesForm.propTypes = {
+  t: PropTypes.func.isRequired,
+};
+
+export default withTranslation('common')(ExpensesForm);
