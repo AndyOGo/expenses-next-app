@@ -134,4 +134,4 @@ ExpensesForm.propTypes = {
   t: PropTypes.func.isRequired,
 };
 
-export default withTranslation()(ExpensesForm);
+export default withTranslation('common')(ExpensesForm);

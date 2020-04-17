@@ -55,4 +55,4 @@ const ExpensesTable = ({ t }) => {
   );
 };
 
-export default withTranslation()(ExpensesTable);
+export default withTranslation('common')(ExpensesTable);
