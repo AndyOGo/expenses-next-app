@@ -1,3 +1,6 @@
+import PropTypes from 'prop-types';
+
+import { i18n, Link, withTranslation } from '../i18n';
 import BSNavbar from '../components/bootstrap/BSNavbar/BSNavbar';
 import BSNav from '../components/bootstrap/BSNav/BSNav';
 import BSCard from '../components/bootstrap/BSCard/BSCard';
@@ -9,11 +12,11 @@ import Notifications from '../components/expenses/Notifications';
 import ExpensesForm from '../components/expenses/ExpensesForm';
 import ExpensesTable from '../components/expenses/ExpensesTable';
 
-function Index() {
+function Index({ t }) {
   return (
     <div>
       <BSNavbar bg="dark" variant="dark">
-        <BSNavbar.Brand>Expenses</BSNavbar.Brand>
+        <BSNavbar.Brand>{t('Expenses')}</BSNavbar.Brand>
 
         <BSOverlayTrigger
           placement="bottom"
@@ -53,4 +56,8 @@ Index.getInitialProps = async () => ({
   namespacesRequired: ['common'],
 });
 
-export default Index;
+Index.propTypes = {
+  t: PropTypes.func.isRequired,
+};
+
+export default withTranslation('common')(Index);
