@@ -3,6 +3,8 @@ import React from 'react';
 import { Provider } from 'unstated';
 import 'bootstrap/scss/bootstrap-reboot.scss';
 
+import { appWithTranslation } from '../i18n';
+
 // adjust NextJs App as suggested in example
 // @link: https://github.com/bennygenel/nextjs-with-unstated/blob/master/pages/_app.js
 class ExpensesApp extends App {
@@ -17,4 +19,4 @@ class ExpensesApp extends App {
   }
 }
 
-export default ExpensesApp;
+export default appWithTranslation(ExpensesApp);
