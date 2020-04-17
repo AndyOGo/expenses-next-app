@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import Link from 'next/link';
 
 import { i18n, withTranslation } from '../i18n';
 import BSNavbar from '../components/bootstrap/BSNavbar/BSNavbar';
@@ -14,13 +13,18 @@ import Notifications from '../components/expenses/Notifications';
 import ExpensesForm from '../components/expenses/ExpensesForm';
 import ExpensesTable from '../components/expenses/ExpensesTable';
 
-const BSDropdownItemLink = ({ href, ...props }) => (
-  <Link href={href}>
-    <a {...props} />
-  </Link>
+const ChangeLanguageLink = ({ locale, onClick, ...props }) => (
+  <a
+    {...props}
+    onClick={event => {
+      event.preventDefault();
+      i18n.changeLanguage(locale);
+      onClick(event);
+    }}
+  />
 );
 
-function Index({ t }) {
+function Index({ t, currentLanguage }) {
   return (
     <div>
       <BSNavbar bg="dark" variant="dark">
@@ -28,10 +32,20 @@ function Index({ t }) {
 
         <BSNav>
           <BSNavDropdown title={t('Select Language')}>
-            <BSNavDropdown.Item href="/" as={BSDropdownItemLink}>
+            <BSNavDropdown.Item
+              active={currentLanguage === 'en'}
+              href="/"
+              as={ChangeLanguageLink}
+              locale="en"
+            >
               EN
             </BSNavDropdown.Item>
-            <BSNavDropdown.Item href="/de" as={BSDropdownItemLink}>
+            <BSNavDropdown.Item
+              active={currentLanguage === 'de'}
+              href="/de"
+              as={ChangeLanguageLink}
+              locale="de"
+            >
               DE
             </BSNavDropdown.Item>
           </BSNavDropdown>
@@ -71,7 +85,8 @@ function Index({ t }) {
   );
 }
 
-Index.getInitialProps = async () => ({
+Index.getInitialProps = async ({ req }) => ({
+  currentLanguage: req ? req.language : i18n.language,
   namespacesRequired: ['common'],
 });
 
