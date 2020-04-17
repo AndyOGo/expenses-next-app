@@ -78,7 +78,7 @@ function Index({ t, currentLanguage }) {
         </BSCard.Header>
 
         <BSCard.Body>
-          <ExpensesTable />
+          <ExpensesTable currentLanguage={currentLanguage} />
         </BSCard.Body>
       </BSCard>
     </div>

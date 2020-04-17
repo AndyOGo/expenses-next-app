@@ -6,9 +6,9 @@ import { BSContainer } from '../bootstrap/BSGrid/BSGrid';
 import Table from '../table/Table';
 import ExpensesContainer from '../../container/ExpensesContainer';
 
-const ExpensesTable = ({ t }) => {
+const ExpensesTable = ({ t, currentLanguage }) => {
   const columns = React.useMemo(
-    () => [
+    language => [
       {
         Header: t('Recipient'),
         accessor: 'recipient',
@@ -33,7 +33,7 @@ const ExpensesTable = ({ t }) => {
         // sortType: 'datetime',
       },
     ],
-    []
+    [currentLanguage]
   );
 
   return (
