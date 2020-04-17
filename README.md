@@ -13,6 +13,7 @@ This is a [Next.js](https://nextjs.org/) project to track expenses.
 - [Concepts](#concepts)
   - [State](#state)
   - [Headless Components](#headless-components)
+  - [I18n](#i18n)
   - [Client-side Validation](#client-side-validation)
   - [API](#api)
   - [Logging](#logging)
@@ -94,6 +95,10 @@ Global state is managed with [`unstated`](https://github.com/jamiebuilds/unstate
 Interface Logic of [`react-final-form`](https://final-form.org/react) and [`react-table`](https://github.com/tannerlinsley/react-table) are used to drive the UI state.
 
 [`react-bootstrap`](https://react-bootstrap.netlify.com/) and [`bootstrap`](https://getbootstrap.com/) are used to visually display the UI.
+
+### I18n
+
+[`next-i18next`](https://next-i18next.com/) is used to utilize [`i18next`](https://www.i18next.com/) and [`react-i18next`](https://react.i18next.com/) for internationalisation.
 
 ### Client-side Validation
 
