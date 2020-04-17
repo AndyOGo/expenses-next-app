@@ -1,4 +1,14 @@
 {
   "Expenses": "Spesen",
-  "Select Language": "Sprache wählen"
+  "Select Language": "Sprache wählen",
+  "Enter expense": "Spesen erfassen",
+  "Recipient": "Empfänger",
+  "Type": "Typ",
+  "Food": "Essen",
+  "Drinks": "Getränke",
+  "Other": "Andere",
+  "Amount": "Betrag",
+  "Currency": "Währung",
+  "Transaction Date": "Transaktionsdatum",
+  "Save": "Speichern"
 }
