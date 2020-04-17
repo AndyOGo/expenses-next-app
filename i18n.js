@@ -11,4 +11,8 @@ const NextI18NextInstance = new NextI18Next({
 export default NextI18NextInstance;
 
 /* Optionally, export class methods as named exports */
-export const { appWithTranslation, withTranslation } = NextI18NextInstance;
+export const {
+  appWithTranslation,
+  withTranslation,
+  Link,
+} = NextI18NextInstance;
