@@ -11,6 +11,7 @@
   "Currency": "Currency",
   "Transaction Date": "Transaction Date",
   "Save": "Save",
+  "All expenses": "All expenses",
   "Delete": "Delete",
   "Search": "Search",
   "records": "{{count}} record...",
